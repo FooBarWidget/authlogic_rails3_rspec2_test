@@ -9,7 +9,9 @@ Obviously `user_session` should be `UserSession` in this file.
 
 There is only one controller, `OverviewController`, which maps to the root path and prints the email address of the currently logged in user.
 
-There is only one test, namely the controller spec `overview_controller_spec`. It's supposed to create a user, log in the user, and invoke `OverviewController#index`. In `spec_helper.rb` I've required `authlogic/test_case` and included `Authlogic::TestCase` in the RSpec config block, as per the Authlogic documentation.
+There are two tests in the controller spec `overview_controller_spec`. One test is supposed to create a user, log in the user, and invoke `OverviewController#index`. The other one does the same thing without loggin in the user.
+
+In `spec_helper.rb` I've required `authlogic/test_case` and included `Authlogic::TestCase` in the RSpec config block, as per the Authlogic documentation.
 
 To run the tests:
 
@@ -31,3 +33,7 @@ You should see a failure like:
 ## The problem of activate_authlogic
 
 If you look in `spec_helper.rb` you see that I call `activate_authlogic` in a `before :each` block. Comment it out. Open `overview_controller_spec` and uncomment `activate_authlogic` there. Run the test. Now it suddenly works! Why? Do I really have to redundantly call `activate_authlogic` in each controller spec seperately?
+
+## The problem of automatically logging in a user upon creating the user object
+
+Apparently upon creating a user, Authlogic will automatically logs in that user! Does Authlogic always do this or only in tests? How do I turn it off?
