@@ -34,6 +34,6 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.before :each do
-    #puts "1: controller = #{controller.class.inspect}"
+    activate_authlogic
   end
 end

@@ -11,13 +11,13 @@ There is only one controller, `OverviewController`, which maps to the root path 
 
 There is only one test, namely the controller spec `overview_controller_spec`. It's supposed to create a user, log in the user, and invoke `OverviewController#index`. In `spec_helper.rb` I've required `authlogic/test_case` and included `Authlogic::TestCase` in the RSpec config block, as per the Authlogic documentation.
 
-To see the test failing:
+To run the tests:
 
     bundle install
     bundle exec rake db:migrate
     bundle exec rake spec
 
-You should see something like:
+You should see a failure like:
 
     Failures:
     
@@ -27,3 +27,7 @@ You should see something like:
            undefined method `request=' for nil:NilClass
          # /opt/ruby-enterprise-1.8.7-2010.01/lib/ruby/gems/1.8/gems/activesupport-3.0.11/lib/active_support/whiny_nil.rb:48:in `method_missing'
          # /opt/ruby-enterprise-1.8.7-2010.01/lib/ruby/gems/1.8/gems/authlogic-3.1.0/lib/authlogic/controller_adapters/abstract_adapter.rb:63:in `send'
+
+## The problem of activate_authlogic
+
+If you look in `spec_helper.rb` you see that I call `activate_authlogic` in a `before :each` block. Comment it out. Open `overview_controller_spec` and uncomment `activate_authlogic` there. Run the test. Now it suddenly works! Why? Do I really have to redundantly call `activate_authlogic` in each controller spec seperately?
