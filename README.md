@@ -14,7 +14,8 @@ There is only one test, namely the controller spec `overview_controller_spec`. I
 To see the test failing:
 
     bundle install
-    rake spec
+    bundle exec rake db:migrate
+    bundle exec rake spec
 
 You should see something like:
 
