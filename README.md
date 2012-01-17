@@ -1,4 +1,4 @@
-This is a small example program demonstrating the use of Authlogic, Rails 3.0 and RSpec 2. For some reason the tests don't work but I don't know why. I'm putting this code online in the hope that someone can tell me what's wrong.
+I'm migrating from Authlogic + Rails 2.3 + RSpec 1 to Authlogic + Rails 3 + RSpec 2. I stumbled upon a number of mysterious problems so I created this small test app to see what I did wrong. This is a small example program demonstrating the use of Authlogic, Rails 3.0 and RSpec 2. For some reason the tests don't work but I don't know why. I'm putting this code online in the hope that someone can tell me what's wrong.
 
 There is a User model and corresponding migration with the minimum required fields. There is also a UserSession object. I found a bug in the Authlogic session generator though: `rails g authlogic:session user_session` generates a file containing:
 
