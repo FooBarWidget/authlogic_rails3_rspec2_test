@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OverviewController do
   before :each do
-    #activate_authlogic
+    activate_authlogic
   end
 
   describe "GET index" do
